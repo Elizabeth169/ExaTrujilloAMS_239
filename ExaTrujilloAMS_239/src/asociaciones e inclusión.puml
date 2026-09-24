@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+' actores lado izquierda
+actor Tutor
+actor "Autoridad Académica" as Autoridad
+actor Profesor
+
+rectangle "Sistema Consultora Softtek AMS Trujillo " {
+  usecase "Asistencia" as UC1
+  usecase "Abandono Escolar" as UC2
+  usecase "Estudiante en Riesgo" as UC3
+  usecase "Genera Alerta de Riesgo" as UC4
+  usecase "Consultar Estado Académico" as UC5
+}
+
+' actores lado derecha
+actor Estudiante
+
+' Izquierda
+Profesor --> UC1
+Tutor --> UC1
+Tutor --> UC4
+Autoridad --> UC3
+
+' Derecha
+Estudiante --> UC1
+Estudiante --> UC5
+
+UC1 .> UC2 : <<include>>
+@enduml
