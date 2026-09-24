@@ -1,0 +1,47 @@
+@startuml
+class usuario {
+    - id: int
+    - nombre: String 
+    - correo: String 
+    + iniciarSesion(): boolean 
+}
+
+class Profesor  {
+    - numEmpleado: String 
+    - departamento: String 
+    + registrarAsistencias(): void
+}
+
+class Tutor {
+    - cubiculo: String 
+    - consultarAlertas(): void
+    + registrarTutoría(): void
+}
+
+class Estudiante {
+    - matrícula: String 
+    - carrera: String 
+    - nivelRiesgo: String 
+    + calcularRiesgo(): String 
+}
+
+class Asistencia {
+    - idAsistencia: int
+    - fecha: String
+    - presente: boolean 
+}
+
+class Alerta {
+    - idAlerta: int 
+    - tipoRiesgo: String 
+    - fecha Generacion: String
+}
+
+usuario <|-- Profesor 
+usuario <|-- Tutor
+
+Profesor --> Asistencia 
+Estudiante --> Asistencia 
+Tutor --> Alerta 
+Estudiante --> Alerta
+@enduml
